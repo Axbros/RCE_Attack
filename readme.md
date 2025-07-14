@@ -65,6 +65,15 @@ Recommended additions:
 ```shell
 go build -o executor main.go
 ```
+| 系统                  | 架构    | 编译命令                                                                   | 输出文件名                   |
+| ------------------- | ----- | ---------------------------------------------------------------------- | ----------------------- |
+| Linux (x86\_64)     | amd64 | `GOOS=linux GOARCH=amd64 go build -o executor-linux main.go`           | `executor-linux`        |
+| Linux (ARMv7)       | arm   | `GOOS=linux GOARCH=arm GOARM=7 go build -o executor-linux-arm main.go` | `executor-linux-arm`    |
+| Linux (ARM64)       | arm64 | `GOOS=linux GOARCH=arm64 go build -o executor-linux-arm64 main.go`     | `executor-linux-arm64`  |
+| Windows (x86\_64)   | amd64 | `GOOS=windows GOARCH=amd64 go build -o executor.exe main.go`           | `executor.exe`          |
+| macOS (Intel)       | amd64 | `GOOS=darwin GOARCH=amd64 go build -o executor-darwin main.go`         | `executor-darwin`       |
+| macOS (Apple M1/M2) | arm64 | `GOOS=darwin GOARCH=arm64 go build -o executor-darwin-arm64 main.go`   | `executor-darwin-arm64` |
+
 2. Start the Server
 ```shell
 ./executor
