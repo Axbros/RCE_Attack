@@ -45,3 +45,40 @@ Executes a system command on the server and returns the output.
   "error": "exec: \"notarealcmd\": executable file not found in $PATH"
 }
 ```
+🔐 Security Considerations (Built-in)
+Execution timeout: 3 seconds to prevent long-running commands
+
+Logs all requests: IP, timestamp, command, output, error
+
+Recommended additions:
+
+- IP rate limiting middleware
+
+- Token-based authentication
+
+- Command whitelist filtering
+
+- Execution sandbox (e.g. Docker)
+
+🛠 Running Locally
+1. Build the Project
+```shell
+go build -o executor main.go
+```
+2. Start the Server
+```shell
+./executor
+# Listens on localhost:8080 by default
+```
+3. Test with Postman or curl
+```shell
+curl -X POST http://localhost:8080/run \
+  -H "Content-Type: application/json" \
+  -d '{"cmd": "date"}'
+
+```
+**📋 License**
+
+This project is released under the MIT License.
+
+⚠️ Use at your own risk. This service executes system-level commands. DO NOT deploy it to production or the public internet without strict access controls.
